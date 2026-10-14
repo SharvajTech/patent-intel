@@ -1,0 +1,274 @@
+{
+  "queries": [
+    {
+      "id": "q001",
+      "query": "systems methods accelerating disposition digital dispute events machine learning-based digital",
+      "relevant_patent_ids": [
+        "US2024154975A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q002",
+      "query": "confidence assistance guest substance liquid measure platform individual",
+      "relevant_patent_ids": [
+        "US2024153312A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q003",
+      "query": "artificial intelligence ai -based user interfaces",
+      "relevant_patent_ids": [
+        "US2026100921A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q004",
+      "query": "utilizes labels schema records formatted classification documents party",
+      "relevant_patent_ids": [
+        "US12579118B2"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q005",
+      "query": "non-fungible token prediction using supervised machine learning",
+      "relevant_patent_ids": [
+        "US2025139520A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q006",
+      "query": "host ransomware security programs snapshots snapshot circuit service",
+      "relevant_patent_ids": [
+        "US2024427890A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q007",
+      "query": "validating machine learning model after deployment",
+      "relevant_patent_ids": [
+        "US11580422B1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q008",
+      "query": "file media tags portion segment position combinations excludes",
+      "relevant_patent_ids": [
+        "US2025209817A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q009",
+      "query": "apparatuses methods performing artificial intelligence encoding artificial intelligence decoding image",
+      "relevant_patent_ids": [
+        "US2020175650A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q010",
+      "query": "cosine item recommendation similarity session embeddings items sequence",
+      "relevant_patent_ids": [
+        "US2025328945A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q011",
+      "query": "artificial intelligence training workload placement minimize completion time heterogeneous environment",
+      "relevant_patent_ids": [
+        "US2025238710A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q012",
+      "query": "observability query generative blob platform valid answered text",
+      "relevant_patent_ids": [
+        "US12596755B1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q013",
+      "query": "standardization wound treatment guidelines informed artificial intelligence",
+      "relevant_patent_ids": [
+        "US2025054599A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q014",
+      "query": "target predictor performance workload includes device estimated characteristic",
+      "relevant_patent_ids": [
+        "US2025061037A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q015",
+      "query": "motion forecasting autonomous vehicles using machine learning model trained cycle",
+      "relevant_patent_ids": [
+        "US2025222960A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q016",
+      "query": "occasions groups configuring signaling receiving indication monitoring includes",
+      "relevant_patent_ids": [
+        "US2024276250A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q017",
+      "query": "predicting rates hypoglycemia machine learning",
+      "relevant_patent_ids": [
+        "US2024370747A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q018",
+      "query": "distance pair coarse network refined devices location phase",
+      "relevant_patent_ids": [
+        "US2026101207A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q019",
+      "query": "offline multi-vendor training cross-node machine learning",
+      "relevant_patent_ids": [
+        "US2025272574A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q020",
+      "query": "account party entity behavior future entities real sources",
+      "relevant_patent_ids": [
+        "US2024013127A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q021",
+      "query": "predictive resolutions tickets using semi-supervised machine learning",
+      "relevant_patent_ids": [
+        "US2023164099A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q022",
+      "query": "deemphasized obscured training boundaries portions images boundary presented",
+      "relevant_patent_ids": [
+        "US2021365789A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q023",
+      "query": "automatically classifying cloud infrastructure components prioritized multi-tenant cloud environment resolution",
+      "relevant_patent_ids": [
+        "US2023229543A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q024",
+      "query": "projects resource burst ones capacity allocations resources management",
+      "relevant_patent_ids": [
+        "US2026148157A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q025",
+      "query": "artificial intelligence based hydraulic fracturing monitoring control",
+      "relevant_patent_ids": [
+        "US2025382863A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q026",
+      "query": "categorical splits variables plurality decision tree assigning nodes",
+      "relevant_patent_ids": [
+        "US2024386287A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q027",
+      "query": "artificial intelligence based application error detection resolution",
+      "relevant_patent_ids": [
+        "US2026017137A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q028",
+      "query": "domain traffic rate improve because models cross personally",
+      "relevant_patent_ids": [
+        "US2022210171A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q029",
+      "query": "artificial intelligence channel state information",
+      "relevant_patent_ids": [
+        "US2026046000A1"
+      ],
+      "style": "title",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    },
+    {
+      "id": "q030",
+      "query": "construction cost schedules complete task refined creation projects",
+      "relevant_patent_ids": [
+        "US2023229986A1"
+      ],
+      "style": "keyterms",
+      "note": "known-item proxy label; replace with human judgements for real conclusions"
+    }
+  ]
+}

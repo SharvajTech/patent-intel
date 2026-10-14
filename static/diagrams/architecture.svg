@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 660" width="980" height="660" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6b7c"/>
+    </marker>
+    <style>
+      .box { fill:#ffffff; stroke:#5b6b7c; stroke-width:1.5; rx:6; }
+      .ingest { fill:#eef4fb; stroke:#3b6ea5; }
+      .retrieve { fill:#eef8f1; stroke:#2f7d4f; }
+      .llm { fill:#fdf2e9; stroke:#b3691a; }
+      .infra { fill:#f4f0fa; stroke:#6b4fa8; }
+      .edge { fill:#f7f7f8; stroke:#8a8f96; stroke-dasharray:4 3; }
+      .t { font-size:13px; fill:#1d2733; }
+      .tb { font-size:13.5px; font-weight:bold; fill:#1d2733; }
+      .ts { font-size:11px; fill:#5b6b7c; }
+      .lane { font-size:12px; font-weight:bold; fill:#8a8f96; letter-spacing:1px; }
+      .ln { stroke:#5b6b7c; stroke-width:1.4; marker-end:url(#arrow); fill:none; }
+      .lnd { stroke:#8a8f96; stroke-width:1.2; stroke-dasharray:4 3; marker-end:url(#arrow); fill:none; }
+    </style>
+  </defs>
+
+  <text x="24" y="30" class="tb" font-size="17">Patent Intel Agent — Architecture</text>
+  <text x="24" y="48" class="ts">Offline ingestion (once) · Online query path (per request)</text>
+
+  <!-- ================= INGESTION LANE ================= -->
+  <text x="24" y="82" class="lane">OFFLINE — INGESTION</text>
+  <rect x="24" y="92" width="932" height="118" fill="#fbfcfd" stroke="#dde3e9" stroke-width="1" rx="6"/>
+
+  <rect class="box ingest" x="42" y="112" width="150" height="76"/>
+  <text x="117" y="139" class="tb" text-anchor="middle">Patent Source</text>
+  <text x="117" y="157" class="ts" text-anchor="middle">HUPD / PatentsView</text>
+  <text x="117" y="172" class="ts" text-anchor="middle">local JSON · CSV</text>
+
+  <rect class="box ingest" x="228" y="112" width="160" height="76"/>
+  <text x="308" y="134" class="tb" text-anchor="middle">build_dataset.py</text>
+  <text x="308" y="152" class="ts" text-anchor="middle">clean · dedupe</text>
+  <text x="308" y="167" class="ts" text-anchor="middle">validate · chunk</text>
+
+  <rect class="box ingest" x="424" y="112" width="158" height="76"/>
+  <text x="503" y="134" class="tb" text-anchor="middle">patent_chunks</text>
+  <text x="503" y="152" class="ts" text-anchor="middle">.json</text>
+  <text x="503" y="167" class="ts" text-anchor="middle">patent_id · section · chunk_id</text>
+
+  <rect class="box ingest" x="618" y="112" width="152" height="76"/>
+  <text x="694" y="139" class="tb" text-anchor="middle">BGE-M3</text>
+  <text x="694" y="157" class="ts" text-anchor="middle">1024-dim dense</text>
+  <text x="694" y="172" class="ts" text-anchor="middle">ingest_chunks.py</text>
+
+  <rect class="box infra" x="806" y="112" width="132" height="76"/>
+  <text x="872" y="139" class="tb" text-anchor="middle">Qdrant</text>
+  <text x="872" y="157" class="ts" text-anchor="middle">cosine · :6333</text>
+  <text x="872" y="172" class="ts" text-anchor="middle">persisted volume</text>
+
+  <path class="ln" d="M 192 150 L 226 150"/>
+  <path class="ln" d="M 388 150 L 422 150"/>
+  <path class="ln" d="M 582 150 L 616 150"/>
+  <path class="ln" d="M 770 150 L 804 150"/>
+
+  <!-- ================= QUERY LANE ================= -->
+  <text x="24" y="248" class="lane">ONLINE — QUERY PATH</text>
+  <rect x="24" y="258" width="932" height="298" fill="#fbfcfd" stroke="#dde3e9" stroke-width="1" rx="6"/>
+
+  <rect class="box edge" x="42" y="358" width="126" height="76"/>
+  <text x="105" y="385" class="tb" text-anchor="middle">Client</text>
+  <text x="105" y="403" class="ts" text-anchor="middle">curl · Swagger</text>
+  <text x="105" y="418" class="ts" text-anchor="middle">n8n webhook</text>
+
+  <rect class="box" x="204" y="338" width="150" height="116"/>
+  <text x="279" y="363" class="tb" text-anchor="middle">FastAPI</text>
+  <text x="279" y="381" class="ts" text-anchor="middle">:8000</text>
+  <text x="279" y="400" class="ts" text-anchor="middle">/search</text>
+  <text x="279" y="415" class="ts" text-anchor="middle">/hybrid-search</text>
+  <text x="279" y="430" class="ts" text-anchor="middle">/analyze</text>
+  <text x="279" y="445" class="ts" text-anchor="middle">/parse-pdf</text>
+
+  <!-- retrievers -->
+  <rect class="box retrieve" x="404" y="292" width="158" height="70"/>
+  <text x="483" y="317" class="tb" text-anchor="middle">Vector Search</text>
+  <text x="483" y="335" class="ts" text-anchor="middle">BGE-M3 → Qdrant</text>
+  <text x="483" y="350" class="ts" text-anchor="middle">semantic top-K</text>
+
+  <rect class="box retrieve" x="404" y="432" width="158" height="70"/>
+  <text x="483" y="457" class="tb" text-anchor="middle">BM25</text>
+  <text x="483" y="475" class="ts" text-anchor="middle">in-memory index</text>
+  <text x="483" y="490" class="ts" text-anchor="middle">keyword top-K</text>
+
+  <rect class="box retrieve" x="606" y="362" width="140" height="70"/>
+  <text x="676" y="387" class="tb" text-anchor="middle">RRF Fusion</text>
+  <text x="676" y="405" class="ts" text-anchor="middle">1 / (k + rank)</text>
+  <text x="676" y="420" class="ts" text-anchor="middle">k = 60</text>
+
+  <rect class="box llm" x="790" y="362" width="148" height="70"/>
+  <text x="864" y="387" class="tb" text-anchor="middle">Ollama LLM</text>
+  <text x="864" y="405" class="ts" text-anchor="middle">structured JSON</text>
+  <text x="864" y="420" class="ts" text-anchor="middle">Pydantic validated</text>
+
+  <path class="ln" d="M 168 396 L 202 396"/>
+  <path class="ln" d="M 354 380 L 380 380 L 380 327 L 402 327"/>
+  <path class="ln" d="M 354 412 L 380 412 L 380 467 L 402 467"/>
+  <path class="ln" d="M 562 327 L 584 327 L 584 390 L 604 390"/>
+  <path class="ln" d="M 562 467 L 584 467 L 584 404 L 604 404"/>
+  <path class="ln" d="M 746 397 L 788 397"/>
+
+  <!-- qdrant link up to vector -->
+  <path class="lnd" d="M 872 188 L 872 250 L 483 250 L 483 290"/>
+  <text x="640" y="244" class="ts" text-anchor="middle">vector lookup</text>
+
+  <!-- chunks feed bm25 -->
+  <path class="lnd" d="M 503 188 L 503 214 L 300 214 L 300 250 L 348 250 L 348 520 L 483 520 L 483 504"/>
+  <text x="352" y="538" class="ts">chunks loaded at startup</text>
+
+  <!-- response back -->
+  <path class="lnd" d="M 864 432 L 864 528 L 105 528 L 105 436"/>
+  <text x="470" y="546" class="ts" text-anchor="middle">structured JSON response — query · relevant_patents · overlap_summary · evidence · confidence</text>
+
+  <!-- footer -->
+  <rect x="24" y="576" width="932" height="62" fill="#fdf6f6" stroke="#d9b3b3" stroke-width="1" rx="6"/>
+  <text x="40" y="600" class="tb" fill="#8a2f2f">Disclaimer</text>
+  <text x="40" y="620" class="t" fill="#6b3535">AI-assisted technical analysis — not legal advice. Not a freedom-to-operate opinion, infringement or validity determination,</text>
+  <text x="40" y="634" class="t" fill="#6b3535">and not a substitute for review by a qualified patent attorney.</text>
+</svg>

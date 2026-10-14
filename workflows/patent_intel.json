@@ -1,0 +1,245 @@
+{
+  "name": "Patent Intel Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "patent-intel",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-380, 300],
+      "webhookId": "a1000000-0000-4000-8000-000000000001"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "s1",
+              "name": "query",
+              "value": "={{ $json.body.query }}",
+              "type": "string"
+            },
+            {
+              "id": "s2",
+              "name": "top_k",
+              "value": "={{ $json.body.top_k || 5 }}",
+              "type": "number"
+            },
+            {
+              "id": "s3",
+              "name": "api_base",
+              "value": "http://api:8000",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "Set Params",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-160, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.query }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Query Provided?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [60, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.api_base }}/hybrid-search",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k, candidate_k: 30 }) }}",
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "neverError": false
+            }
+          }
+        }
+      },
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "Hybrid Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [300, 200],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Params').item.json.api_base }}/analyze",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $('Set Params').item.json.query, top_k: $('Set Params').item.json.top_k, retrieval: 'hybrid' }) }}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "name": "LLM Analysis",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [540, 200],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "r1",
+              "name": "query",
+              "value": "={{ $('Set Params').item.json.query }}",
+              "type": "string"
+            },
+            {
+              "id": "r2",
+              "name": "retrieval",
+              "value": "={{ { method: 'hybrid', result_count: $('Hybrid Search').item.json.result_count, top_chunks: $('Hybrid Search').item.json.results } }}",
+              "type": "object"
+            },
+            {
+              "id": "r3",
+              "name": "analysis",
+              "value": "={{ $json }}",
+              "type": "object"
+            },
+            {
+              "id": "r4",
+              "name": "status",
+              "value": "ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000006",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [780, 200]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1",
+              "name": "status",
+              "value": "error",
+              "type": "string"
+            },
+            {
+              "id": "e2",
+              "name": "error",
+              "value": "={{ $json.error?.message || $json.message || 'Upstream API call failed. Check that the FastAPI service is reachable and that the corpus has been ingested.' }}",
+              "type": "string"
+            },
+            {
+              "id": "e3",
+              "name": "query",
+              "value": "={{ $('Set Params').item.json.query }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000007",
+      "name": "Build Error",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [540, 440]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000008",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1020, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Set Params", "type": "main", "index": 0 }]]
+    },
+    "Set Params": {
+      "main": [[{ "node": "Query Provided?", "type": "main", "index": 0 }]]
+    },
+    "Query Provided?": {
+      "main": [
+        [{ "node": "Hybrid Search", "type": "main", "index": 0 }],
+        [{ "node": "Build Error", "type": "main", "index": 0 }]
+      ]
+    },
+    "Hybrid Search": {
+      "main": [
+        [{ "node": "LLM Analysis", "type": "main", "index": 0 }],
+        [{ "node": "Build Error", "type": "main", "index": 0 }]
+      ]
+    },
+    "LLM Analysis": {
+      "main": [
+        [{ "node": "Build Response", "type": "main", "index": 0 }],
+        [{ "node": "Build Error", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build Response": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    },
+    "Build Error": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "patent-intel-agent"
+  },
+  "tags": []
+}

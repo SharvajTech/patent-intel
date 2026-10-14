@@ -1,0 +1,17 @@
+# --- Part 1: API + vector DB client ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+qdrant-client==1.11.3
+python-dotenv==1.0.1
+
+# --- Part 2: PDF parsing ---
+pymupdf==1.24.11
+python-multipart==0.0.9
+
+# --- Part 3: dataset sources ---
+requests==2.32.3
+
+# --- Part 4: BGE-M3 embeddings ---
+# Pulls torch. The Dockerfile installs the CPU-only torch build first to
+# avoid ~4GB of unused CUDA libraries.
+sentence-transformers==3.1.1
